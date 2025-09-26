@@ -74,7 +74,7 @@ Built on this foundation, Morpheus is first baseline model collection (7B & 14B)
 <img src="figs/overview.png">
 </div>
 <div align="center">
-<figcaption align = "center"><b>Figure 1: Overview of the AnesBench. 
+<figcaption align = "center"><b>Figure 1: Overview of the AnesSuite. 
  </b></figcaption>
 </div>
 </figure>
