@@ -1,7 +1,7 @@
 
 <p align="center">
 
-  <h2 align="center"><strong>AnesBench: Multi-Dimensional Evaluation of LLM Reasoning in Anesthesiology</strong></h2>
+  <h2 align="center"><strong>AnesSuite: A Comprehensive Benchmark and Dataset Suite for Anesthesiology Reasoning in LLMs</strong></h2>
 
 <div align="center">
 <h5>
@@ -22,7 +22,7 @@
 
 
 <h5 align="center">
-<a href="https://mililab.github.io/anesbench.ai/"> <img src="https://img.shields.io/badge/Project-AnesBench-4183C4.svg?logo=Github"></a> <a href="https://arxiv.org/abs/2504.02404"> <img src="https://img.shields.io/badge/Arxiv-2504.02404-b31b1b.svg?logo=arXiv"></a> <a href="https://huggingface.co/datasets/MiliLab/AnesBench"><img src="https://img.shields.io/badge/🤗%20HuggingFace-AnesBench-FFD43B.svg?logo=huggingface"></a>
+<a href="https://mililab.github.io/anesbench.ai/"> <img src="https://img.shields.io/badge/Project_Page-AnesSuite-test?logo=Github&color=green"></a> <a href="https://arxiv.org/abs/2504.02404"> <img src="https://img.shields.io/badge/Arxiv-2504.02404-b31b1b.svg?logo=arXiv"></a> <a href="https://huggingface.co/datasets/MiliLab/AnesBench"></a>
 </h5>
 
 <figure>
@@ -38,10 +38,9 @@
 - [🔍 Overview](#-overview)
 - [📖 Datasets](#-datasets)
   - [AnesBench](#anesbench)
-    - [AnesBench JSON Example](#json-sample)
-    - [Field Explanations](#field-explanations)
-    - [AnesBench Recommended Usage](#recommended-usage)
-  - [AnesCorpus & AnesQA](#anescorpus--anesqa)
+  - [AnesCorpus](#anescorpus)
+  - [AnesQA](#anesqa)
+  - [AnesR1](#anesr1)
 - [🐎 Leaderboard](#-leaderboard)
 - [🔨 Evaluation](#-evaluation)
 - [🛠️ Training with LLaMA-Factory](#️-training-with-llama-factory)
@@ -50,29 +49,24 @@
 
 
 # 🔥 Update
-**2025.05.14**
-- We released the evaluation code along with usage instructions!!!
+**2025.09.26**
+- We updated the latest progress.
 
-**2025.05.13**
-- We released AnesBench on HuggingFace!!!
+**2025.05.14**
+- We released the evaluation code along with usage instructions.
 
 **2025.04.04**
-- We uploaded our work on [arXiv](https://arxiv.org/abs/2504.02404)!!!
+- We uploaded our work on [arXiv](https://arxiv.org/abs/2504.02404).
 
 **2025.03.31**
-- We released the [AnesBench project page](https://mililab.github.io/anesbench.ai/) !!!.
+- We released the [AnesSuite project page](https://mililab.github.io/anesbench.ai/).
 
 
 # 🌞 Intro
-This project aims to enhance the reasoning capabilities of large language models in the field of anesthesiology. We focus on two key questions: (1) What model characteristics are associated with stronger anesthetic reasoning abilities? (2) How do training methodologies and test-time scaling influence LLM performance in anesthesiology-specific reasoning tasks?
+AnesSuite is a benchmark and dataset suite for advancing LLM reasoning in anesthesiology. It provides bilingual benchmark and curated training resources (AnesCorpus, AnesQA, AnesR1) to support CPT, SFT, and RLVR. 
 
-During the course of the project, we developed three datasets: **AnesBench**, a bilingual benchmark for anesthetic reasoning; **AnesQA**, a supervised fine-tuning dataset; and **AnesCorpus**, a continual pretraining corpus.
+Built on this foundation, Morpheus is first baseline model collection (7B & 14B) for anesthesiology reasnoning. Together, AnesSuite and Morpheus offer a practical infrastructure for research and development of advanced anesthesiology LLMs.
 
-This Github repository provides an overview of the datasets, usage examples, and a leaderboard featuring performance results of over 50 state-of-the-art LLMs.
-
-> For dataset access, please refer to our Hugging Face repository: [AnesBench](https://huggingface.co/datasets/MiliLab/AnesBench), [AnesQA](https://huggingface.co/datasets/MiliLab/AnesQA) and [AnesCorpus](https://huggingface.co/datasets/MiliLab/AnesCorpus).
-
-> For key insights and conclusions, please refer to the [AnesBench project page](https://mililab.github.io/anesbench.ai/).
 
 # 🔍 Overview
 <figure>
@@ -89,89 +83,47 @@ This Github repository provides an overview of the datasets, usage examples, and
 
 ## AnesBench
 
-<a href="https://huggingface.co/datasets/MiliLab/AnesBench"> <img src="https://img.shields.io/badge/🤗%20HuggingFace-AnesBench-FFD43B.svg?logo=huggingface"></a>
+**AnesBench** is designed to assess anesthesiology-related reasoning capabilities of Large Language Models (LLMs). It contains 7,972 anesthesiology MCQs (≈4.4k English / 3.5k Chinese). Each question is labeled with a three-level categorization of cognitive demands, enabling evaluation of LLMs’ knowledge, application, and clinical reasoning abilities across diverse linguistic contexts.
 
-**AnesBench** is designed to assess anesthesiology-related reasoning capabilities of Large Language Models (LLMs). 
-It contains 4,427 anesthesiology questions in English. 
-Each question is labeled with a three-level categorization of cognitive demands and includes Chinese-English translations, 
-enabling evaluation of LLMs’ knowledge, application, and clinical reasoning abilities across diverse linguistic contexts.
+## AnesCorpus
 
-### JSON Sample
+**AnesCorpus** is a large-scale, domain-specific corpus constructed for CPT in the field of anesthesiology.
 
-```json
-    {
-        "id": "1bb76e22-6dbf-5b17-bbdf-0e6cde9f9440",
-        "choice_num": 4,
-        "answer": "A",
-        "level": 1,
-        "en_question": "english question",
-        "en_X": "option X",
-        "zh_question": "中文问题",
-        "zh_X": "选项X",
-    }
-```
-
-### Field Explanations
-
-| Field         | Type   | Description                                                                 |
-|------------------|----------|-----------------------------------------------------------------------------|
-| `id`             | string   | A randomly generated ID using UUID                                          |
-| `choice_num`     | int      | The number of options in this question                                      |
-| `answer`         | string   | The correct answer to this question                                         |
-| `level`          | int      | The cognitive demand level of the question (`1`, `2`, and `3` represent `system1`, `system1.x`, and `system2` respectively) |
-| `en_question`    | string   | English description of the question stem                                   |
-| `cn_question`    | string   | Chinese description of the question stem                                   |
-| `en_X`           | string   | English description of the option (X takes values from A until the total number of options is reached)                                         |
-| `cn_X`           | string   | Chinese description of the option (X takes values from A until the total number of options is reached)                                         |
-
-
-### Recommended Usage
-
-- **Question Answering**: QA in a zero-shot or few-shot setting, where the question is fed into a LLM or other QA system. Accuracy could be used as the evaluation metric.
-
-## AnesCorpus & AnesQA
-<a href="https://huggingface.co/datasets/MiliLab/AnesCorpus"> <img src="https://img.shields.io/badge/🤗%20HuggingFace-AnesCorpus-FFD43B.svg?logo=huggingface"></a> <a href="https://huggingface.co/datasets/MiliLab/AnesQA"> <img src="https://img.shields.io/badge/🤗%20HuggingFace-AnesQA-FFD43B.svg?logo=huggingface"></a>
-
-We also provides two domain-specific datasets—**AnesCorpus** and **AnesQA**—designed to support research and development of language models in the field of anesthesiology. These resources are tailored for use in Continuous Pre-training (CPT) and Supervised Fine-Tuning (SFT) of LLMs.
-
-### AnesCorpus
-
-**AnesCorpus** is a large-scale, domain-specific corpus constructed for **Continuous Pre-training (CPT)** in the field of anesthesiology. It is built from two primary sources:
-
-- **Domain-specific filtering** from large-scale corpora such as [FineWeb](https://huggingface.co/datasets/HuggingFaceFW/fineweb), using keyword-based heuristics.
-- **PubMed research articles** related to anesthesiology, processed through rigorous cleaning and formatting to ensure high relevance and quality.
-
-| Language | Rows    | Tokens   |
-|----------|---------|----------|
-| English  | ~1.59M  | ~3B      |
-| Chinese  | ~593K   | ~0.2B    |
+| Language | Rows    |
+|----------|---------|
+| English  | ~1.8M   |
+| Chinese  | ~0.6M   |
 
 This curated dataset provides a rich foundation for pretraining language models to understand anesthesiology-related concepts, terminology, and clinical context.
 
+## AnesQA
 
-### AnesQA
-
-**AnesQA** is a bilingual **question-answering (QA)** dataset designed for **Supervised Fine-Tuning (SFT)**. The QA pairs are generated and filtered using advanced large language models, then translated to Chinese to support multilingual fine-tuning.
+**AnesQA** is a QA dataset designed for SFT. The QA pairs are generated and filtered using advanced large language models.
 
 | Language | QA Pairs |
 |----------|----------|
-| English  | ~20.7K   |
-| Chinese  | ~20.6K   |
+| English  | ~20K   |
 
 AnesQA enables the development of instruction-tuned models with robust reasoning and answering capabilities in the anesthesiology domain.
 
+## AnesR1
+AnesR1 contains over 10k instances, each featuring a verifiable MCQ and a detailed reasoning chain, making it well-suited for both SFT and RLVR.
+
+| Language | QA Pairs |
+|----------|----------|
+| English  | ~3.2K   |
+| Chinese  | ~7K   |
+
+
 ### Recommended Usage
 
-These datasets are compatible with a wide range of instruction-tuned language models and popular training frameworks.
+- AnesBench: Use as the primary evaluation benchmark to measure LLM performance across factual recall, hybrid reasoning, and complex decision-making in anaesthesiology.
 
-We provide an example below demonstrating how to fine-tune a model using AnesCorpus and AnesQA with [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). For implementation details, refer to the [**Example Usage**](#️-training-with-llama-factory).
+- AnesCorpus: Apply for CPT to enhance domain knowledge before fine-tuning.
 
-#  🐎 Leaderboard
+- AnesQA: Use for SFT.
 
-We maintain a live leaderboard to track model performance on AnesBench, covering both System 1 and System 2 tasks in the anesthesiology domain.
-
-📊 Check out the leaderboard here:
-👉 https://mililab.github.io/anesbench.ai/leaderboard/
+- AnesR1: Use for SFT or RLVR to strengthen reasoning capability.
 
 # 🔨 Evaluation
 
