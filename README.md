@@ -49,6 +49,9 @@
 
 
 # 🔥 Update
+**2026.01.26**
+- Our paper AnesSuite got accepted to ICLR 2026.
+
 **2025.09.26**
 - We updated the latest progress.
 
@@ -322,10 +325,12 @@ llamafactory-cli train configs/qwen2.5-7b-sft-anesthesia.yaml
 If you find AnesBench helpful, please consider giving this repo a ⭐ and citing:
 
 ```latex
-@article{AnesBench,
-  title={AnesBench: Multi-Dimensional Evaluation of LLM Reasoning in Anesthesiology},
-  author={Xiang Feng and Wentao Jiang and Zengmao Wang and Yong Luo and Pingbo Xu and Baosheng Yu and Hua Jin and Bo Du and Jing Zhang},
-  journal={arXiv preprint arXiv:2504.02404},
-  year={2025}
+@inproceedings{
+  feng2026anessuite,
+  title={AnesSuite: A Comprehensive Benchmark and Dataset Suite for Anesthesiology Reasoning in {LLM}s},
+  author={Xiang Feng and Wentao Jiang and Zengmao Wang and Yong Luo and Pingbo Xu and Baosheng Yu and Hua Jin and Jing Zhang},
+  booktitle={The Fourteenth International Conference on Learning Representations},
+  year={2026},
+  url={https://openreview.net/forum?id=iKRQMeC7yO}
 }
 ```
