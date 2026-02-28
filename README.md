@@ -49,6 +49,9 @@
 
 
 # 🔥 Update
+**2026.02.28**
+- AnesBench has been released on https://huggingface.co/datasets/MiliLab/AnesBench!
+
 **2026.01.26**
 - Our paper AnesSuite got accepted to ICLR 2026.
 
