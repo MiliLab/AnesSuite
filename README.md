@@ -5,14 +5,15 @@
 
 <div align="center">
 <h5>
-<em>Xiang Feng<sup>1 *</sup>, Wentao Jiang<sup>1 *</sup>, Zengmao Wang<sup>1</sup>, Yong Luo<sup>1 †</sup>, Pingbo Xu<sup>2,3</sup>, Baosheng Yu<sup>4</sup>, Hua Jin<sup>5,6</sup>,  Jing Zhang<sup>1 †</sup> </em>
+<em>Xiang Feng<sup>1 *</sup>, Wentao Jiang<sup>1 *</sup>, Zengmao Wang<sup>1</sup>, Yong Luo<sup>1 †</sup>, Pingbo Xu<sup>2,3</sup>, Baosheng Yu<sup>4,5</sup>, Hua Jin<sup>6,7</sup>,  Jing Zhang<sup>1 †</sup> </em>
     <br><br>
        	<sup>1</sup> School of Computer Science, Wuhan University, China,<br/>
         <sup>2</sup> Department of Anesthesiology, Zhejiang Cancer Hospital, China,<br/> 
         <sup>3</sup> Institute of Medicine, Chinese Academy of Sciences, Hangzhou, Zhejiang, China<br/> 
         <sup>4</sup> Lee Kong Chian School of Medicine, Nanyang Technological University, Singapore<br/> 
-        <sup>5</sup> Department of Anesthesiology, First People’s Hospital of Yunnan Province, China<br/> 
-        <sup>6</sup> Kunming University of Science and Technology, China<br/> 
+        <sup>5</sup> Centre of AI in Medicine, Nanyang Technological University, Singapore<br/> 
+        <sup>6</sup> Department of Anesthesiology, First People’s Hospital of Yunnan Province, China<br/> 
+        <sup>7</sup> Kunming University of Science and Technology, China<br/> 
 </h5>
 <h5>
 <sup>∗</sup> Equal contribution, <sup>†</sup> Corresponding author
