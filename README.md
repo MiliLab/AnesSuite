@@ -91,6 +91,8 @@ Built on this foundation, Morpheus is first baseline model collection (7B & 14B)
 
 **AnesBench** is designed to assess anesthesiology-related reasoning capabilities of Large Language Models (LLMs). It contains 7,972 anesthesiology MCQs (≈4.4k English / 3.5k Chinese). Each question is labeled with a three-level categorization of cognitive demands, enabling evaluation of LLMs’ knowledge, application, and clinical reasoning abilities across diverse linguistic contexts.
 
+> 📋 **Errata**: [AnesBench Errata Form](https://icn1ozjyp37u.feishu.cn/share/base/form/shrcnPm4JkRPOU7rlZ7FvvV7JYd) — If you find any errors in AnesBench, please report them here.
+
 ## AnesCorpus
 
 **AnesCorpus** is a large-scale, domain-specific corpus constructed for CPT in the field of anesthesiology.
